@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -12,10 +13,10 @@ class MyApp extends StatelessWidget {
       // Application theme data, you can set the colors for the application as
       // you want
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
       // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Products'),
     );
   }
 }
@@ -27,15 +28,27 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+        appBar: AppBar(
+          // The title text which will be shown on the action bar
+          title: Text(title),
         ),
-      ),
-    );
+        body: ListView.builder(
+            itemCount: 3,
+            itemBuilder: (context, index) {
+              return Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: ListTile(
+                      leading: Image.network("https://images.pexels.com/photos/5586483/pexels-photo-5586483.jpeg?cs=srgb&dl=pexels-tima-miroshnichenko-5586483.jpg&fm=jpg"),
+                      title: Text(
+                        "Laptop Toshiba Core i5",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      subtitle: Text(
+                        "Lorem Ipsum dolor sit amet, cons",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      )));
+            }));
   }
 }
